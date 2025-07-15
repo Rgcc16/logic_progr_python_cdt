@@ -1,30 +1,48 @@
 ##MVC
 #Model
-###tem que ter a aentrada dos numeros, tipo onde vou inserir os numeros, juntado os numeros utlizados e mandando para o controlador
-
+### vai conter a lógica de cálculo # da calculadora.
 
 #View
-###Com os dados so vai produzir a visualização, resultado, o calculo feito, etc
-
+### vai exibir o resultado na tela.
 
 #Controller
-###Com os números em maos ele vai organizar e gerenciar o que deve ser feito, e azer contecer, mandando o que deve ser visualizado para o view
+### vai receber as entradas do # usuário e interagir com o modelo.
+
+
 def mostrar_menu():
-print("/n---calculadora---/n")
-print("/n---adição---/n")
-print("/n---Subtração---/n")
-print("/n---Sair---/n")
-print("/n------/n")
+    print("\n---Calculadora---")
+    print("1. Adição")
+    print("2. Subtração")
+    print("5. Sair")
+    print("-----------------")
 
 def obter_numeros():
     while True:
-    try:
-        num1 = float(input("Digite o primeiro Número"))
-        num2 = float(input("digite o segundo Número"))
-        return num1, num2
-    exceptValueErro:
-    print("Entrada Inválida, Por Favor, "/
-          "digite números Validos")
+        try:
+            num1 = float(input("Digite o primeiro número: "))
+            num2 = float(input("Digite o segundo número: "))
+            return num1, num2
+        except ValueError:
+            print("Entrada inválida. Por favor, " \
+            "digite números válidos.")
     
+def main():
+    while True:
+        mostrar_menu()
+        opcao = input("Escolha uma opção: ")
+        if opcao == "1":
+            num1, num2 = obter_numeros()
+            resultado = num1 + num2
+            print(f"Resultado da adição: {resultado}")
+        elif opcao == "2":
+            num1, num2 = obter_numeros()
+            resultado = num1 - num2
+            print(f"Resultado da subtração: {resultado}")
+        elif opcao == "5":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
 
-main()
+if __name__ == "__main__":
+    main()
